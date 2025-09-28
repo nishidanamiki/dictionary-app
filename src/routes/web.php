@@ -22,3 +22,5 @@ use App\Http\Controllers\DictionaryController;
 Route::get('/', [DictionaryController::class, 'index'])->name('dictionaries.index');
 Route::get('/dictionaries/create', [DictionaryController::class, 'create'])->name('dictionaries.create');
 Route::post('/dictionaries', [DictionaryController::class, 'store'])->name('dictionaries.store');
+Route::patch('/dictionaries/{id}', [DictionaryController::class, 'update'])->name('dictionaries.update');
+Route::delete('/dictionaries/{id}', [DictionaryController::class, 'destroy'])->name('dictionaries.destroy');

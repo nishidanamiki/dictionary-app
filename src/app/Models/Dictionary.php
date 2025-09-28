@@ -10,4 +10,11 @@ class Dictionary extends Model
     use HasFactory;
 
     protected $fillable = ['keyword', 'description', 'user_id'];
+
+    public function scopeKeywordSearch($query, $keyword)
+    {
+        if (!empty($keyword)) {
+            $query->where('keyword', 'like', '%' . $keyword . '%');
+        }
+    }
 }
