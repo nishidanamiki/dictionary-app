@@ -18,7 +18,21 @@
                 @yield('logo')
             </div>
             <div class="header__nav">
-                @yield('nav')
+                @guest
+                    <a href="{{ route('login') }}" class="header__nav-button">ログイン</a>
+                    <a href="{{ route('register') }}" class="header__nav-button">会員登録</a>
+                @endguest
+
+                @auth
+                    <form action="{{ route('logout') }}">
+                        @csrf
+                        <button class="header__nav-button" type="submit">ログアウト</button>
+                    </form>
+                @endauth
+
+                <div class="header-nav__item">
+                    @yield('nav')
+                </div>
             </div>
         </div>
     </header>
