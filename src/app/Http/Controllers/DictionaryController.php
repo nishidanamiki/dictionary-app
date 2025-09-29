@@ -34,15 +34,22 @@ class DictionaryController extends Controller
             $query->where('keyword', 'like', "%{$search}%")->orWhere('description', 'like', "%{$search}%");
         }
 
-        $dictionaries = $query->orderBy('updated_at', 'desc')->get();
+        $dictionaries = $query->orderBy('updated_at', 'desc')->paginate(4);
 
         return view('index', compact('dictionaries'));
     }
     public function update(Request $request, $id)
     {
-        $dictionay = Dictionary::findOrFail($id);
+        $dictionary = Dictionary::findOrFail($id);
 
-        $dictionay->fill($request->only(['keyword', 'description']))->save();
+        $dictionary->fill($request->only(['keyword', 'description']))->save();
+
+        return redirect()->route('dictionaries.index');
+    }
+    public function destroy($id)
+    {
+        $dictionary = Dictionary::findOrFail($id);
+        $dictionary->delete();
 
         return redirect()->route('dictionaries.index');
     }

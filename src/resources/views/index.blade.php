@@ -46,4 +46,5 @@
             </tr>
         @endforeach
     </table>
+    {{ $dictionaries->links() }}
 @endsection
