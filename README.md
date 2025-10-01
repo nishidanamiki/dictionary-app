@@ -14,7 +14,7 @@ entries`のメッセージが表示されビルドができないことがあり
 
 ```bash
 mysql:
- platform:linux/x86_64(この分追加)
+ platform:linux/x86_64(この文追加)
  image:mysql:8.0.26
  environment:
 ```
