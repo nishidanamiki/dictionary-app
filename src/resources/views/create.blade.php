@@ -16,12 +16,18 @@
             @csrf
             <div class="create-form__group">
                 <div class="create-form__input--text">
-                    <input type="text" name="keyword" placeholder="キーワード">
+                    <input type="text" name="keyword" value="{{ old('keyword') }}" placeholder="キーワード">
+                    @error('keyword')
+                        <div class="form-error">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="create-form__group">
                 <div class="create-form__input--textarea">
-                    <textarea name="description" placeholder="説明"></textarea>
+                    <textarea name="description" placeholder="説明">{{ old('description') }}</textarea>
+                    @error('description')
+                        <div class="form-error">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="create-form__button">

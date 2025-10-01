@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <title>辞書アプリ</title>
     @yield('css')
 </head>
@@ -24,7 +24,7 @@
                 @endguest
 
                 @auth
-                    <form action="{{ route('logout') }}">
+                    <form action="{{ route('logout') }}" method="post">
                         @csrf
                         <button class="header__nav-button" type="submit">ログアウト</button>
                     </form>

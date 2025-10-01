@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Dictionary;
+use App\Http\Requests\DictionaryRequest;
 
 class DictionaryController extends Controller
 {
@@ -16,12 +18,12 @@ class DictionaryController extends Controller
     {
             return view('create');
     }
-    public function store(Request $request)
+    public function store(DictionaryRequest $request)
     {
         Dictionary::create([
             'keyword' => $request->input('keyword'),
             'description' => $request->input('description'),
-            'user_id' => 1,
+            'user_id' => Auth::id(),
         ]);
         return redirect('/');
     }
@@ -38,17 +40,28 @@ class DictionaryController extends Controller
 
         return view('index', compact('dictionaries'));
     }
-    public function update(Request $request, $id)
+    public function update(DictionaryRequest $request, $id)
     {
         $dictionary = Dictionary::findOrFail($id);
 
-        $dictionary->fill($request->only(['keyword', 'description']))->save();
+        //本人以外は禁止
+        if ($dictionary->user_id !== auth()->id()) {
+            abort(403, '権限がありません');
+        }
+
+        $dictionary->fill($request->only(['keyword', 'description']));
+        $dictionary->save();
 
         return redirect()->route('dictionaries.index');
     }
     public function destroy($id)
     {
         $dictionary = Dictionary::findOrFail($id);
+
+        //本人以外は禁止
+        if ($dictionary->user_id !== auth()->id()) {
+            abort(403, '権限がありません');
+        }
         $dictionary->delete();
 
         return redirect()->route('dictionaries.index');

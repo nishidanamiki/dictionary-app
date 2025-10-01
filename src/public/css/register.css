@@ -1,0 +1,18 @@
+.register-form__content {
+    max-width: 800px;
+}
+
+.form__label--item {
+    text-align: center;
+}
+
+.form__input--text input {
+    width: 50%;
+}
+
+.form__button-submit {
+    margin: 10px auto 15px;
+    width: 10%;
+    border-radius: 4px;
+    border: 1px solid #000;
+}
