@@ -6,10 +6,6 @@
 
 @section('logo', '辞書アプリ')
 
-@section('nav')
-    {{-- <a href="{{ route('login') }}" class="header__nav-button">ログインへ</a> --}}
-@endsection
-
 @section('content')
     <div class="register-form__content">
         <div class="register-form__heading">
@@ -23,13 +19,11 @@
                 </div>
                 <div class="form__group-content">
                     <div class="form__input--text">
-                        <input type="text" name="name" value="{{ old('name') }}" required />
+                        <input type="text" name="name" value="{{ old('name') }}">
                     </div>
-                    <div class="form__error">
-                        @error('name')
-                            {{ $message }}
-                        @enderror
-                    </div>
+                    @error('name')
+                        <div class="form-error">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="form__group">
@@ -38,13 +32,11 @@
                 </div>
                 <div class="form__group-content">
                     <div class="form__input--text">
-                        <input type="email" name="email" value="{{ old('email') }}" required />
+                        <input type="email" name="email" value="{{ old('email') }}">
                     </div>
-                    <div class="form__error">
-                        @error('email')
-                            {{ $message }}
-                        @enderror
-                    </div>
+                    @error('email')
+                        <div class="form-error">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="form__group">
@@ -53,13 +45,11 @@
                 </div>
                 <div class="form__group-content">
                     <div class="form__input--text">
-                        <input type="password" name="password" required />
+                        <input type="password" name="password">
                     </div>
-                    <div class="form__error">
-                        @error('password')
-                            {{ $message }}
-                        @enderror
-                    </div>
+                    @error('password')
+                        <div class="form-error">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="form__group">
@@ -68,8 +58,11 @@
                 </div>
                 <div class="form__group-content">
                     <div class="form__input--text">
-                        <input type="password" name="password_confirmation" required />
+                        <input type="password" name="password_confirmation">
                     </div>
+                    @error('password_confirmation')
+                        <div class="form-error">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="form__button">

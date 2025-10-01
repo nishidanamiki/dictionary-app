@@ -25,7 +25,7 @@ class DictionaryController extends Controller
             'description' => $request->input('description'),
             'user_id' => Auth::id(),
         ]);
-        return redirect('/');
+        return redirect('/')->with('message', '登録しました');
     }
     public function index(Request $request)
     {
@@ -52,7 +52,7 @@ class DictionaryController extends Controller
         $dictionary->fill($request->only(['keyword', 'description']));
         $dictionary->save();
 
-        return redirect()->route('dictionaries.index');
+        return redirect('/')->with('message', '更新しました');
     }
     public function destroy($id)
     {
@@ -64,6 +64,6 @@ class DictionaryController extends Controller
         }
         $dictionary->delete();
 
-        return redirect()->route('dictionaries.index');
+        return redirect('/')->with('message', '削除しました');
     }
 }

@@ -1,16 +1,21 @@
+.form-error {
+    color: red;
+}
+
 input {
     width: 70%;
     height: 30px;
-    margin: 30px auto;
+    margin: 15px auto;
 }
 
 textarea {
     width: 70%;
     height: 150px;
+    margin: 15px auto;
 }
 
 .create-form__button-submit {
     width: 10%;
     height: 30px;
-    margin-bottom: 15px;
+    margin: 15px auto;
 }

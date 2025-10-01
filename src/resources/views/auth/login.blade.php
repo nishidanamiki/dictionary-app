@@ -6,10 +6,6 @@
 
 @section('logo', '辞書アプリ')
 
-@section('nav')
-    {{-- <a href="{{ route('register') }}" class="header__nav-button"> 新規登録へ </a> --}}
-@endsection
-
 @section('content')
     <div class="login-form__content">
         <div class="login-form__heading">
@@ -25,11 +21,9 @@
                     <div class="form__input--text">
                         <input type="email" name="email" value="{{ old('email') }}" />
                     </div>
-                    <div class="form__error">
-                        @error('email')
-                            {{ $message }}
-                        @enderror
-                    </div>
+                    @error('email')
+                        <div class="form-error">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="form__group">
@@ -40,11 +34,9 @@
                     <div class="form__input--text">
                         <input type="password" name="password" />
                     </div>
-                    <div class="form__error">
-                        @error('password')
-                            {{ $message }}
-                        @enderror
-                    </div>
+                    @error('password')
+                        <div class="form-error">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
             <div class="form__button">

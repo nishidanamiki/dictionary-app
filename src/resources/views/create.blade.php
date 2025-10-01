@@ -6,10 +6,6 @@
 
 @section('logo', '登録画面')
 
-@section('nav')
-    <a href="{{ route('dictionaries.index') }}" class="header__nav-button">検索画面へ</a>
-@endsection
-
 @section('content')
     <div class="main">
         <form class="create-form" action="{{ route('dictionaries.store') }}" method="post">

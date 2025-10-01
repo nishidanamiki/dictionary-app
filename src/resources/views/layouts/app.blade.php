@@ -24,16 +24,18 @@
                 @endguest
 
                 @auth
+                    @if (request()->routeIs('dictionaries.index'))
+                        <a href="{{ route('dictionaries.create') }}" class="header__nav-button">登録画面へ</a>
+                    @elseif (request()->routeIs('dictionaries.create'))
+                        <a href="{{ route('dictionaries.index') }}" class="header__nav-button">検索画面へ</a>
+                    @endif
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
                         <button class="header__nav-button" type="submit">ログアウト</button>
                     </form>
                 @endauth
-
-                <div class="header-nav__item">
-                    @yield('nav')
-                </div>
             </div>
+        </div>
         </div>
     </header>
     <main>

@@ -48,9 +48,6 @@
                             @method('patch')
                             <input class="update-form__input" type="text" name="keyword"
                                 value="{{ $dictionary->keyword }}">
-                            @error('keyword')
-                                <div class="form-error">{{ $message }}</div>
-                            @enderror
                         @else
                             <span class="readonly-text">{{ $dictionary->keyword }}</span>
                     @endif
@@ -59,9 +56,6 @@
                     @if ($dictionary->user_id === Auth::id())
                         <input class="update-form__input" type="text" name="description"
                             value="{{ $dictionary->description }}">
-                        @error('description')
-                            <div class="form-error">{{ $message }}</div>
-                        @enderror
                     @else
                         <span class="readonly-text">{{ $dictionary->description }}</span>
                     @endif
